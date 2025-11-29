@@ -16,14 +16,30 @@ namespace Generic.Infraestructure.DataAccess.Repositories
             await _context.Users.AddAsync(user);
         }
 
-        public async Task<bool> emailAlreadyUsed(string email)
+        public async Task<bool> EmailAlreadyUsed(string email)
         {
             return await _context.Users.AsNoTracking().AnyAsync(u => u.Email == email);
         }
 
-        public Task<UserEntity?> GetUserByEmail(string email)
+        public async Task<UserEntity?> GetUserByEmail(string email)
         {
-            return _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email == email);
+            return await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<string?> GetUserPwdById(int userId)
+        {
+            return await _context.Users
+                .Where(u => u.Id == userId)
+                .Select(u => u.PasswordHash)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task SetNewPassword(int id, string newPassword)
+        {
+            await _context.Users.Where(u => u.Id == id)
+                .ExecuteUpdateAsync(
+                    u => u.SetProperty(u=> u.PasswordHash,newPassword)
+                );
         }
     }
 }

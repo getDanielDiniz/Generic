@@ -71,7 +71,7 @@ namespace Generic.Application.UseCases.User.Register
                 throw new ErrorOnRequestValidation(errors);
             }
 
-            var emailAlreadyUsed = await _readOnlyUserRepository.emailAlreadyUsed(request.Email);
+            var emailAlreadyUsed = await _readOnlyUserRepository.EmailAlreadyUsed(request.Email);
             if (emailAlreadyUsed) throw new ErrorOnInformationConflict(UserResource.EMAIL_ALREADY_USED);            
         }
     }

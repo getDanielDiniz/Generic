@@ -113,5 +113,14 @@ namespace Generic.Comunication.Resources.User {
                 return ResourceManager.GetString("PASSWORD_UPPERCASE_LETTER", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The new password should be different from the old..
+        /// </summary>
+        public static string PASSWORDS_EQUALS {
+            get {
+                return ResourceManager.GetString("PASSWORDS_EQUALS", resourceCulture);
+            }
+        }
     }
 }

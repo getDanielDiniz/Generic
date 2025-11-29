@@ -88,6 +88,15 @@ namespace Generic.Comunication.Resources.User {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a None user was found for id {0}.
+        /// </summary>
+        public static string USER_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("USER_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Username must be between 3 and 20 characters..
         /// </summary>
         public static string USERNAME_INVALID_LENGTH {

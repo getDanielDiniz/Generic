@@ -1,4 +1,5 @@
 ﻿using Generic.Application.Mapping;
+using Generic.Application.UseCases.User.ChangePassword;
 using Generic.Application.UseCases.User.Login;
 using Generic.Application.UseCases.User.Register;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,7 @@ namespace Generic.Application
             // User
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<ILoginUseCase, LoginUseCase>();
+            services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
         }
 
         private static void AddAutoMapperProfiles(IServiceCollection services)
